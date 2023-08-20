@@ -2,6 +2,7 @@ import React, { useState, forwardRef, useImperativeHandle } from 'react';
 
 interface ThirdLevelProps {
   isVisible: boolean;
+  smenu?: any;
 }
 
 export interface ThirdLevelRef {
@@ -9,7 +10,7 @@ export interface ThirdLevelRef {
 }
 
 const ThirdLevel: React.ForwardRefRenderFunction<ThirdLevelRef, ThirdLevelProps> = (
-  { isVisible },
+  { isVisible, smenu },
   ref
 ) => {
   const [isl3Open, setIsl3Open] = useState(isVisible);
@@ -27,14 +28,16 @@ const ThirdLevel: React.ForwardRefRenderFunction<ThirdLevelRef, ThirdLevelProps>
   return (
     <div className={`level-three-inner${isl3Open ? ' open translate-y-0' : ''}`}>
       <div className='flex flex-col'>
-        <a onClick={(e) => handleThirdToggleClick(e)} className={'hover:text-black cursor-pointer'}>back</a>
+        <a onClick={(e) => handleThirdToggleClick(e)} className={'hover:text-black cursor-pointer text-sm mb-4'}>back</a>
+        
         <div className="submenu-container">
             <nav>
-              <a href="#" className="text-gray-200 hover:text-black transition ease transform duration-300">Level 3 Item 2</a>
-              <a href="#" className="text-gray-200 hover:text-black transition ease transform duration-300">Level 3 Item 2</a>
-              <a href="#" className="text-gray-200 hover:text-black transition ease transform duration-300">Level 3 Item 2</a>
+              {smenu.map((s: any, i: React.Key | null | undefined) => {
+                return <a href={s.link} key={i} className="text-gray-200 hover:text-black transition ease transform duration-300">{s.linkTitle}</a>
+              })}
             </nav>
         </div>
+      
       </div>
     </div>
   );

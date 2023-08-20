@@ -142,12 +142,12 @@ header nav {
 
 .menu--default .menu {
   transform: translateX(-100%);
-  transition: transform 0.3s ease-in-out;
+  transition: transform 0.2s ease-in-out;
 }
 
 .menu--active .menu {
   transform: translateX(0);
-  transition: transform 0.3s ease-in-out; /* Adjust the duration and timing function as needed */
+  transition: transform 0.2s ease-in-out; /* Adjust the duration and timing function as needed */
 }
 
   
