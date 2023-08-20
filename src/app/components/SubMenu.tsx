@@ -58,7 +58,7 @@ const Submenu: React.ForwardRefRenderFunction<SubmenuRef, SubmenuProps> = (
   };
 
   const toggleThirdLevel = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
-    console.log(e.currentTarget.id)
+    
     if(e.currentTarget.id === '1'){
       // @ts-ignore
       setInner(sub1)

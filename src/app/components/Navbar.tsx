@@ -60,29 +60,44 @@ export const Navbar = () => {
             ></div>
           </div>
         </span>
+        
         <div className="menu">
           <div className="menu-inner">
             <nav>
-              <a
-                href="#"
-                className="text-gray-200 hover:text-black transition ease transform duration-300"
-              >
+              <a href="#" className="text-gray-200 hover:text-black transition ease transform duration-300">
                 Work
               </a>
-              <a
-                href="#"
-                className="text-gray-200 hover:text-black transition ease transform duration-300"
-              >
+              <a href="#" className="text-gray-200 hover:text-black transition ease transform duration-300">
                 Info
               </a>
-              <a
-                className="text-gray-200 hover:text-black transition ease transform duration-300"
+              <a className="text-gray-200 hover:text-black transition ease transform duration-300"
                 onClick={(e) => toggleSubMenu(e)}
                 id={'notes'}
                 role="button"
                 tabIndex={0}
               >
                 Notes
+                {isSubMenuVisible && (
+                <div className="max-sm:hidden absolute left-0 mt-2 transform transition duration-300 ease-in-out group-hover:translate-x-0 translate-x-full bg-gray-700 py-2 px-3 rounded-md shadow-lg">
+                  {/* Submenu content */}
+                  <nav>
+                    <ul>
+                      <li><a href="">Submenu Item</a></li>
+                      <li><a href="">Submenu Item</a></li>
+                      <li><a href="">Child Menu</a>
+                        <ul>
+                          <li><a href="#">Ass</a></li>
+                        </ul>
+                      </li>
+                      <li><a href="">Child Menu</a>
+                        <ul>
+                          <li><a href="#">Ass</a></li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </nav>
+                </div>
+                )}
               </a>
               <div className="md:hidden">
                 <Submenu ref={submenuRef} isVisible={isSubMenuVisible} />
