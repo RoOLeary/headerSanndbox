@@ -2,26 +2,201 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+
+
+#nav {
+  letter-spacing: 0.03rem;
+  width: 100%;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+/* END OF GENERAL STYLING */
+/* START OF USEFUL CODE */
+header {
+  position: absolute;
+  overflow: visible;
+  z-index: 100;
+  background-color: transparent;
+  width: 100%;
+  height: 5rem;
+  padding: 1.5rem;
+}
+header h1 {
+  font-size: 2.2rem;
+  float: left;
+  margin-top: 5px;
+  font-weight: bold;
+}
+header a {
+  text-decoration: none;
+}
+header span.menu-control-open,
+header span.menu-control-close,
+header nav,
+header a {
+  font-weight: bold;
+}
+header span.menu-control-open,
+header span.menu-control-close,
+header nav a {
+  font-size: 2.2rem;
+}
+header span.menu-control-open {
+
+}
+header span.menu-control-open svg {
+}
+header span.menu-control-open svg line, header span.menu-control-open svg circle {
+  fill: none;
+  stroke: #ffffff;
+}
+
+header span.menu-control-close {
+  font-size: 1.2rem;
+  text-align: right;
+}
+header nav {
+  display: flex;
+  flex-direction: column;
+}
+
+.menu {
+  position: absolute;
+  left: 0;
+  top: 5em;
+  color: #F0F0F0;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  transition: all 0.5s ease-in-out;
+  /* Unnecessary styles for the menu footer */
+  
+}
+
+/* .menu-mobile-active{
+  top: 5em;
+} */
+
+.menu a {
+  transform: translate3d(-150px, 0, 0);
+  transition: transform 0.25s ease-in;
+  /* transition: all 5ms ease-in-out; */
+}
+.menu .menu-inner {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  padding: 1.5rem;
+  background-color:white; 
+  transition: background-color .25s ease-in-out;
+
+}
+
+.menu--active {
+  transition: background-color .1s ease-in-out;
+}
+.menu--active nav a {
+  transform: translate3d(0, 0, 0);
+  transition: transform 250ms ease-in-out;
+  /* Handles items within the slide-out to give them the delayed slide-in */
+}
+
+
+.menu--active .menu-inner{
+  background-color:red; 
+  transition: background-color 250ms ease-in-out;
+}
+
+@media screen and (max-width: 767px) {
+
+  .submenu-inner.open {
+  left: 0;
+  transition: left 0.3s ease-in-out; /* Slide-in transition */
+}
+
+.submenu-inner {
+  position: absolute;
+  top: 0;
+  left: -100%; /* Start outside the screen */
+  background: rebeccapurple;
+  width: 100%;
+  height: 100vh;
+  padding: 1.5rem;
+  transition: left 0.3s ease-in-out; /* Slide-in transition */
+}
+
+.level-three-inner.open {
+  left: 0;
+  transition: left 0.3s ease-in-out; /* Slide-in transition */
+}
+
+.level-three-inner {
+  position: absolute;
+  top: 0;
+  left: -100%; /* Start outside the screen, just like the second-level submenu */
+  background: green;
+  width: 100%;
+  height: 100vh; /* Adjust the height to cover the entire viewport */
+  padding: 1.5rem;
+  transition: left 0.3s ease-in-out; /* Slide-in transition */
+}
+
+.menu--default .menu {
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
+}
+
+.menu--active .menu {
+  transform: translateX(0);
+  transition: transform 0.3s ease-in-out; /* Adjust the duration and timing function as needed */
+}
+
+  
+  
+}
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .menu--active .menu {
+    width: 100%;
   }
+  .menu--active .menu .menu-inner {
+    width: 100vw;
+  }
+  header .menu-control-open,
+  header .menu-control-close {
+    display: none;
+  }
+  
 }
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+@media screen and (min-width: 1024px) {
+  header {
+    height: 7rem;
+    padding: 2.5rem;
+  }
+  header .menu-control-open,
+  header .menu-control-close {
+    display: none;
+  }
+  header .menu {
+    position: static;
+    overflow: visible;
+    background-color: transparent;
+    width: auto;
+    height: auto;
+  }
+  header .menu .menu-inner {
+    padding: 0;
+    width: 100%;
+  }
+  header .menu a {
+    transform: none;
+    transition: none;
+  }
+ 
+  header nav {
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+  header nav a {
+    font-size: 2.65rem;
+    margin-left: 4rem;
+  }
 }
