@@ -70,35 +70,37 @@ export const Navbar = () => {
               <a href="#" className="text-gray-200 hover:text-black transition ease transform duration-300">
                 Info
               </a>
-              <a className="text-gray-200 hover:text-black transition ease transform duration-300"
+              <div>
+			  <a className="text-gray-200 hover:text-black transition ease transform duration-300"
                 onClick={(e) => toggleSubMenu(e)}
                 id={'notes'}
                 role="button"
                 tabIndex={0}
               >
-                Notes
+                Notes</a>
                 {isSubMenuVisible && (
-                <div className="max-sm:hidden absolute left-0 mt-2 transform transition duration-300 ease-in-out group-hover:translate-x-0 translate-x-full bg-gray-700 py-2 px-3 rounded-md shadow-lg">
+                <div className="max-sm:hidden absolute right-0 mt-2 bg-gray-300 py-2 px-3 rounded-md shadow-lg">
                   {/* Submenu content */}
-                  <nav>
+                  <nav className={'subnav'}>
                     <ul>
-                      <li><a href="">Submenu Item</a></li>
-                      <li><a href="">Submenu Item</a></li>
-                      <li><a href="">Child Menu</a>
-                        <ul>
+                      <li><a href="/one" className="text-sm ml-0 hover:text-black">Submenu Item</a></li>
+                      <li><a href="/tw" className="text-sm ml-0 hover:text-black">Submenu Item</a></li>
+                      <li><a href="" className="text-sm ml-0 hover:text-black">Child Menu</a>
+                        <ul className={`hidden`}>
                           <li><a href="#">Ass</a></li>
                         </ul>
                       </li>
-                      <li><a href="">Child Menu</a>
-                        <ul>
-                          <li><a href="#">Ass</a></li>
+                      <li><a href="" className="text-sm ml-0 hover:text-black">Child Menu</a>
+                        <ul className={`hidden`}>
+                          <li><a href="#" className="text-sm ml-0 hover:text-black">Blah</a></li>
                         </ul>
                       </li>
                     </ul>
                   </nav>
                 </div>
                 )}
-              </a>
+              
+			  </div>
               <div className="md:hidden">
                 <Submenu ref={submenuRef} isVisible={isSubMenuVisible} />
               </div>
